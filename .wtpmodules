@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-modules id="moduleCoreId">
+<wb-module deploy-name="constellations">
+<module-type module-type-id="jst.web">
+<version>1.4</version>
+<property name="ContextRoot"/>
+<property name="JSPLevel"/>
+</module-type>
+<wb-resource deploy-path="/WEB-INF/classes" source-path="/constellations/JavaSource"/>
+<wb-resource deploy-path="/" source-path="/constellations/webApplication"/>
+</wb-module>
+</project-modules>

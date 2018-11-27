@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<!DOCTYPE hibernate-configuration PUBLIC
+	"-//Hibernate/Hibernate Configuration DTD 2.0//EN" 
+	"http://hibernate.sourceforge.net/hibernate-configuration-2.0.dtd">
+
+<hibernate-configuration>
+
+    <session-factory>
+		<property name="hibernate.show_sql">true</property>
+		<property name="hibernate.max_fetch_depth">1</property> <!-- fetch depth used for eager loading (default 1) -->
+
+		<property name="hibernate.dialect">net.sf.hibernate.dialect.HSQLDialect</property>
+		<property name="hibernate.connection.driver_class">org.hsqldb.jdbcDriver</property>
+		<property name="hibernate.connection.username">sa</property>
+		<property name="hibernate.connection.password"></property>
+<!-- 
+		<property name="hibernate.connection.url">jdbc:hsqldb:hsql://localhost:48620</property>
+ -->
+		<property name="hibernate.connection.url">jdbc:hsqldb:C:\data\work\java\recombo\constellations\WebContent\data\db</property>
+		<!--
+
+			DBCP connection pool configuration
+		-->
+		<property name="hibernate.dbcp.maxActive">20</property>
+		<property name="hibernate.dbcp.whenExhaustedAction">1</property>
+		<property name="hibernate.dbcp.maxWait">60000</property>
+		<property name="hibernate.dbcp.maxIdle">10</property>
+		<!-- prepared statement cache -->
+		<property name="hibernate.dbcp.ps.maxActive">100</property>
+		<property name="hibernate.dbcp.ps.whenExhaustedAction">1</property>
+		<property name="hibernate.dbcp.ps.maxWait">60000</property>
+		<property name="hibernate.dbcp.ps.maxIdle">10</property>
+		
+		<!-- 
+			O/R Mapping
+		-->
+		<mapping resource="net/sf/recombo/constellations/constellations.hbm.xml"/>
+
+	</session-factory>
+</hibernate-configuration>
+
+

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="WebApp_ID" version="2.4" xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
+	<display-name>constellations</display-name>
+
+	<filter>
+		<filter-name>CloseDataSession</filter-name>
+		<filter-class>net.sf.recombo.common.persistence.CloseDataSession</filter-class>
+	</filter>
+
+	<!-- Close data session after any JSP is called -->
+	<filter-mapping>
+		<filter-name>CloseDataSession</filter-name>
+		<url-pattern>*.jsp</url-pattern>
+	</filter-mapping>
+
+	<!-- Close data session after any other servlet e.g. AxisServlet is called -->
+	<filter-mapping>
+		<filter-name>CloseDataSession</filter-name>
+		<url-pattern>/servlet/*</url-pattern>
+	</filter-mapping>
+	
+	<!-- Close data session after Flash remoting service is called -->
+	<filter-mapping>
+		<filter-name>CloseDataSession</filter-name>
+		<url-pattern>/gateway</url-pattern>
+	</filter-mapping>
+
+	<servlet>
+		<display-name>HttpSMSMessageReceiver</display-name>
+		<servlet-name>HttpSMSMessageReceiver</servlet-name>
+		<servlet-class>net.sf.recombo.constellations.HttpSMSMessageReceiver</servlet-class>
+	</servlet>
+
+	<!-- Flash Remoting Gateway -->
+	<servlet>
+		<description>AdvancedGateway</description>
+		<display-name>AdvancedGateway</display-name>
+		<servlet-name>AdvancedGateway</servlet-name>
+		<servlet-class>org.openamf.AdvancedGateway</servlet-class>
+		<init-param>
+			<description>Location of the OpenAMF config file.</description>
+			<param-name>OPENAMF_CONFIG</param-name>
+			<param-value>/WEB-INF/openamf-config.xml</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>HttpSMSMessageReceiver</servlet-name>
+		<url-pattern>/servlet/HttpSMSMessageReceiver</url-pattern>
+	</servlet-mapping>
+
+	<!-- Flash Remoting Gateway -->
+	<servlet-mapping>
+		<servlet-name>AdvancedGateway</servlet-name>
+		<url-pattern>/gateway</url-pattern>
+	</servlet-mapping>
+
+	<welcome-file-list>
+	<welcome-file>index.html</welcome-file>
+	<welcome-file>index.htm</welcome-file>
+	<welcome-file>index.jsp</welcome-file>
+	<welcome-file>default.html</welcome-file>
+	<welcome-file>default.htm</welcome-file>
+	<welcome-file>default.jsp</welcome-file>
+	</welcome-file-list>
+</web-app>

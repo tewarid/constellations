@@ -1,0 +1,15 @@
+﻿<flash_project name="reCombo" version="1">
+    <project_folder name="Classes" expanded="true">
+        <project_file path="./Classes/SMSMessage.as" filetype="as" />
+        <project_file path="./Classes/Star.as" filetype="as" />
+        <project_file path="./Classes/Constellation.as" filetype="as" />
+    </project_folder>
+    <project_folder name="Includes" expanded="true">
+        <project_file path="./Includes/starsFunctions.as" filetype="as" />
+        <project_file path="./Includes/createStars.as" filetype="as" />
+        <project_file path="./Includes/remoting.as" filetype="as" />
+    </project_folder>
+    <project_folder name="Fla" expanded="true">
+        <project_file path="./Fla/reCombo.fla" filetype="fla" profile="" def_file="true" />
+    </project_folder>
+</flash_project>

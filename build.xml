@@ -1,0 +1,69 @@
+<project default="all" name="constellations">
+	
+	<target name="init">
+		<property name="src.home" value="${basedir}/constellations/JavaSource"/>
+		<property name="web.home" value="${basedir}/constellations/WebContent"/>
+		<property name="classes.home" value="${web.home}/WEB-INF/classes"/>
+		<property name="lib.home" value="${web.home}/WEB-INF/lib"/>
+	</target>
+	
+	<target name="all"/>
+	
+    <target name="compile" depends="init">
+    	<mkdir dir="${classes.home}"/>
+		<javac srcdir="${src.home}" destdir="${classes.home}" debug="${compile.debug}" deprecation="${compile.deprecation}" optimize="${compile.optimize}">
+			<classpath>
+				<fileset dir="${lib.home}">
+					<include name="**/*.jar"/>
+					<include name="**/*.zip"/>
+				</fileset>
+			</classpath>
+		</javac>
+		<copy todir="${classes.home}">
+			<fileset dir="${src.home}">
+				<include name="**/*.*"/>
+				<exclude name="**/*.java"/>
+			</fileset>
+    	</copy>
+    </target>
+    
+    <target name="warpackage" depends="compile">
+    	<jar destfile="${basedir}/recombo.war">
+    		<fileset dir="${web.home}">
+	    		<exclude name="**/*.swd"/>
+	    		<include name="**/*"/>    			
+    		</fileset>
+    	</jar>
+    </target>
+	
+	<target name="rundb" depends="init">
+		<java classname="org.hsqldb.Server" fork="true">
+			<classpath>
+				<fileset dir="${lib.home}">
+					<include name="*.jar"/>
+				</fileset>
+			</classpath>
+			<arg value="-database"/>
+			<arg path="C:/data/work/java/recombo/constellations/WebContent/data/db"/>
+			<arg value="-port"/>
+			<arg value="48620"/>
+			<arg value="-no_system_exit"/>
+			<arg value="true"/>
+		</java>
+	</target>
+	<target name="stopdb" depends="init">
+		<java classname="org.hsqldb.util.ShutdownServer">
+			<classpath>
+				<fileset dir="${lib.home}">
+					<include name="hsqldb.jar"/>
+				</fileset>
+			</classpath>
+			<arg value="-port"/>
+			<arg value="48620"/>
+			<arg value="-user"/>
+			<arg value="sa"/>
+			<arg value="-shutdownarg"/>
+			<arg value="COMPACT"/>
+		</java>
+	</target>
+</project>

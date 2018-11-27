@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD//EN" 
+	"http://hibernate.sourceforge.net/hibernate-mapping-2.0.dtd">
+<hibernate-mapping>
+	<!--  
+	create table SMSMessage (
+		id char(32) not null primary key,
+		message varchar(200) not null,
+		arrivalDate date not null
+	)
+	-->
+	<class name="net.sf.recombo.constellations.SMSMessage" table="SMSMessage">
+		<id name="id" column="id" type="string" access="field">
+			<generator class="uuid.hex"/>
+		</id>
+		<property name="message" type="string" column="message"/>
+		<property name="arrivalDate" type="timestamp" column="arrivalDate"/>
+	</class>
+</hibernate-mapping>

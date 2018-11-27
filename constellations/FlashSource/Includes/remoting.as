@@ -1,0 +1,2 @@
+﻿
+Object.registerClass( "SMSMessage" , SMSMessage );

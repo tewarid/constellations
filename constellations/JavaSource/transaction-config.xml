@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE transaction-config [
+    <!ELEMENT transaction-config (class*)>
+	<!ELEMENT class (method*)>
+	<!ATTLIST class
+	type CDATA #REQUIRED
+>
+	<!ELEMENT method EMPTY>
+	<!ATTLIST method
+	name CDATA #REQUIRED
+	isolation (TRANSACTION_READ_COMMITTED | TRANSACTION_READ_UNCOMMITTED | TRANSACTION_REPEATABLE_READ | TRANSACTION_SERIALIZABLE) #IMPLIED
+>
+]>
+
+<transaction-config>
+	<class type="br.org.cesar.constellations.ConstellationController">
+		<method name="addSMSMessage"/>
+		<method name="deleteSMSMessage"/>
+		<method name="updateSMSMessage"/>
+	</class>
+</transaction-config>
